@@ -137,6 +137,18 @@ def render_items(items):
 def lines(text):
     return ''.join(f'<span class="line"><span>{E(l)}</span></span>' for l in text.split('|'))
 
+TRACK = '''<script>
+(function () {
+  if (!/[?&]r=/.test(location.search)) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.referrerPolicy = 'no-referrer';
+  s.setAttribute('data-landing', location.href);
+  s.src = 'https://phplaravel-758037-6569212.cloudwaysapps.com/v/script.js';
+  document.head.appendChild(s);
+})();
+</script>'''
+
 def head(title, desc, P):
     return f'''<!doctype html>
 <html lang="sl" class="no-js">
@@ -150,6 +162,7 @@ def head(title, desc, P):
 <link rel="preload" href="{P}assets/fonts/avantt-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{P}assets/fonts/avantt-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{P}assets/css/style.css?v={V}">
+{TRACK}
 </head>
 <body>
 '''
